@@ -27,7 +27,7 @@ useEffect(()=>{
   fetchUsers();
 },[]);
 
-const _render() => {
+const _render = () => {
   const vet = [];
   // Iteração no array 'users' para mostrar os usuários por meio de
   // Componentes View - será feito um a um.
@@ -41,4 +41,21 @@ const _render() => {
   return vet;
 }
 
+// Retorno do componente 'App' - define a estrutura de interface
+return(
+  <View style={styles.container}>
+    <Text style={styles.title}>GET - Listar Usuários</Text>
+    <Button title="Recarregar Lista" onPress={fetchUsers}/>
+    <ScrollView>
+      {_render()}
+    </ScrollView>
+  </View>
+);
 }
+
+// Definição dos styles
+const styles = StyleSheet.create({
+  container : {flex:1, padding:20, marginTop:40},
+  title : {fontSize:22, fontWeight:"bold", marginBottom:10},
+  item : {fontSize: 12, marginTop:10}
+})
